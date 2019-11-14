@@ -141,14 +141,25 @@ class Instructor extends Lambdasian {
   constructor (instructorObj){
     super(instructorObj);
     this.specialty = instructorObj.specialty;
-    this.favLanguage = instructorObj.favLanguage
-    this.catchPhrase = instructorObj.catchPhrase
+    this.favLanguage = instructorObj.favLanguage;
+    this.catchPhrase = instructorObj.catchPhrase;
+     
   }
   demo(subject){
     return `Today we are learning about ${subject}`
   }
   grade(studentObj, subject){
     return `${studentObj.name} receives a perfect score on ${subject}`
+
+  }
+
+  finalScore(studentObj){
+      if(Math.floor(Math.random()*2)=== 0){
+        studentObj.grade = studentObj.grade - Math.ceil(Math.random()* studentObj.grade);
+      } else {
+        studentObj.grade = studentObj.grade + Math.ceil(Math.random()* (100-studentObj.grade));
+      }
+      
 
   }
 }
@@ -174,6 +185,8 @@ class Student extends Lambdasian {
     this.previousBackground = studentObj.previousBackground;
     this.className = studentObj.className;
     this.favSubjects=studentObj.favSubjects;
+    //stretch
+    this.grade = 70;
   }
   listSubjects() {
 
@@ -188,6 +201,15 @@ class Student extends Lambdasian {
     return `${this.name} has begun sprint challenge on ${subject}`
 
   }
+
+  graduate(){
+    if (this.grade > 70){
+      return `Graduated`
+    } else {
+      return 'Go back to doing more assignments!'
+    }
+  }
+
 }
 
 /*
